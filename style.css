@@ -1,4 +1,4 @@
-/* Основні стилі */
+
 body {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@ body {
     background-color: #f2f2f2;
 }
 
-/* Header */
+
 header {
     background-color: #333333;
     color: white;
@@ -39,7 +39,7 @@ nav ul li a:hover {
     color: #ff9900;
 }
 
-/* Анімація для меню */
+
 .menu {
     height: calc(100vh - 130px);
     background: linear-gradient(135deg, #ff6600, #cccccc);
@@ -51,7 +51,7 @@ nav ul li a:hover {
     padding: 20px;
 }
 
-/* Анімація для заголовка */
+
 h1 {
     font-size: 3em;
     margin-bottom: 20px;
@@ -59,7 +59,7 @@ h1 {
     animation: fadeIn 3s ease-out forwards;
 }
 
-/* Анімація для тексту */
+
 p {
     font-size: 1.3em;
     margin-bottom: 30px;
@@ -67,7 +67,6 @@ p {
     animation: slideUp 3s ease-out forwards;
 }
 
-/* Інформаційна секція */
 .info-section {
     background-color: #ffffff;
     padding: 50px 20px;
@@ -92,7 +91,7 @@ p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Кнопка */
+
 .start-btn {
     display: inline-block;
     background-color: white;
@@ -103,19 +102,19 @@ p {
     border-radius: 10px;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
-    opacity: 1;  /* Встановлено, щоб кнопка була видимою */
+    opacity: 1;  
     animation: pulse 6s ease-in-out infinite;
     margin-top: 20px;
 }
 
-/* Анімація кнопки */
+
 .start-btn:hover {
     background-color: #ff6600;
     color: white;
     transform: scale(1.05);
 }
 
-/* Footer */
+
 footer {
     background-color: #333333;
     color: white;
@@ -124,7 +123,7 @@ footer {
     font-size: 0.9em;
 }
 
-/* Анімація пульсації кнопки (повторюється) */
+
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -142,7 +141,7 @@ footer {
     }
 }
 
-/* Анімація коливання меню вгору/вниз (повторюється) */
+
 @keyframes bounceUpDown {
     0%, 100% {
         transform: translateY(0);
@@ -152,7 +151,7 @@ footer {
     }
 }
 
-/* Фоновий анімований колір */
+
 @keyframes backgroundColorChange {
     0% {
         background: linear-gradient(135deg, #ff6600, #cccccc);
@@ -165,22 +164,22 @@ footer {
     }
 }
 
-/* Використовуємо анімацію для кнопки */
+
 .start-btn {
     animation: pulse 6s ease-in-out infinite;
 }
 
-/* Використовуємо анімацію для меню */
+
 .menu {
     animation: bounceUpDown 4s infinite ease-in-out;
 }
 
-/* Використовуємо анімацію для фону */
+
 body {
     animation: backgroundColorChange 10s infinite ease-in-out;
 }
 
-/* Анімації */
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -215,7 +214,7 @@ body {
     }
 }
 
-/* Стилі для підвалу */
+
 .footer-text {
     margin: 0;
 }
