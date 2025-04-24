@@ -18,7 +18,7 @@ def create_questions(path_to_db):
 def create_answers(path_to_db):
     conn = sqlite3.connect('site.db')
     cursor = conn.cursor()
-
+    
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS answers (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -36,25 +36,53 @@ def insert_to_question(path_to_db):
     conn = sqlite3.connect('site.db')
     cursor = conn.cursor()
 
-    cursor.execute("INSERT INTO questions (question_text, image_path) VALUES (?, ?)",
-               ([["Що означає цей дорожній знак?", "1.png"], ["Що означає цей дорожній знак?", "2.png"],
-               ["Що означає цей дорожній знак?", "3.png"], ["Що означає цей дорожній знак?", "4.png"], 
-               ["Що означає цей дорожній знак?", "5.png"]]))
+    questions = [
+        ("Що означає цей дорожній знак?", "1.png"),
+        ("Що означає цей дорожній знак?", "2.png"),
+        ("Що означає цей дорожній знак?", "3.png"),
+        ("Що означає цей дорожній знак?", "4.png"),
+        ("Що означає цей дорожній знак?", "5.png")
+    ]
+
+    cursor.executemany("INSERT INTO questions (question_text, image_path) VALUES (?, ?)", questions)
 
     conn.commit()
     conn.close()
 
 
-def add_answers():
-    conn = sqlite3.connect("site.db")
-    cur = conn.cursor()
-    correct = input("Введіть правильну відповідь: ")
-    wrong_1 = input("Введіть першу неправильну відповідь: ")
-    wrong_2 = input("Введіть другу неправильну відповідь: ")
-    wrong_3 = input("Введіть третю неправильну відповідь: ")
-    cur.execute("INSERT INTO answers (correct, wrong1, wrong2, wrong3) VALUES (?, ?, ?, ?)", (correct, wrong_1, wrong_2, wrong_3))
+def add_answers(path_to_db):
+    conn = sqlite3.connect(path_to_db)
+    cursor = conn.cursor()
+
+    
+    cursor.execute("SELECT id FROM questions")
+    questions = cursor.fetchall()
+
+    
+    for question in questions:
+        question_id = question[0]
+        print(f"Відповіді для питання #{question_id}:")
+        
+        correct_answer = input("Введіть правильну відповідь: ")
+        wrong_1 = input("Введіть першу неправильну відповідь: ")
+        wrong_2 = input("Введіть другу неправильну відповідь: ")
+        wrong_3 = input("Введіть третю неправильну відповідь: ")
+
+        
+        cursor.execute("INSERT INTO answers (question_id, answer_text, is_correct) VALUES (?, ?, ?)",
+                       (question_id, correct_answer, 1))
+
+        
+        cursor.execute("INSERT INTO answers (question_id, answer_text, is_correct) VALUES (?, ?, ?)",
+                       (question_id, wrong_1, 0))
+        cursor.execute("INSERT INTO answers (question_id, answer_text, is_correct) VALUES (?, ?, ?)",
+                       (question_id, wrong_2, 0))
+        cursor.execute("INSERT INTO answers (question_id, answer_text, is_correct) VALUES (?, ?, ?)",
+                       (question_id, wrong_3, 0))
+
     conn.commit()
     conn.close()
+
 
 
 # def select(sql, param = None):
@@ -67,3 +95,23 @@ def add_answers():
 #     data = cur.fetchall()
 #     conn.close()
 #     return data
+
+def print_all_answers():
+    conn = sqlite3.connect("site.db")
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT * FROM answers")
+    answers = cursor.fetchall()
+    
+    for answer in answers:
+        print(answer)
+    
+    conn.close()
+
+
+
+create_questions("site.db")
+create_answers("site.db")
+insert_to_question("site.db")
+print_all_answers()
+# add_answers("site.db")
