@@ -1,14 +1,5 @@
 import sqlite3
 
-from flask import Flask
-from flask import render_template
-
-app = Flask(__name__)
-
-@app.route("/starts_questions")
-def strat():
-    return render_template("index2.html")
-
 def create_questions(path_to_db):
     conn = sqlite3.connect('site.db')
     cursor = conn.cursor()
