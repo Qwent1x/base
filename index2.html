@@ -8,16 +8,16 @@
  </head>
  <body>
      <div class="container">
-         <h1 class="question">Що значить цей знак?</h1>
-         <img src="1.png" class="img">
+         <h1 class="question">{{ question }}</h1>
+         <img class="img" src="{{img}}">
          <div class="answers">
              <div class="column">
-                 <button class="answer">а) Знак переходу</button>
-                 <button class="answer">б) Знак стоп</button>
+                 <button class="answer">а) {{a}}</button>
+                 <button class="answer">б) {{b}}</button>
              </div>
              <div class="column">
-                 <button class="answer">в) Проїзд заборонено</button>
-                 <button class="answer">г) Ремонтні роботи</button>
+                 <button class="answer">в) {{c}}</button>
+                 <button class="answer">г) {{d}}</button>
              </div>
          </div>
      </div>

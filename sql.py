@@ -1,3 +1,4 @@
+import sqlite3
 def create_questions(path_to_db):
     conn = sqlite3.connect('site.db')
     cursor = conn.cursor()
@@ -98,18 +99,20 @@ def print_all_answers():
     conn = sqlite3.connect("site.db")
     cursor = conn.cursor()
     
-    cursor.execute("SELECT * FROM answers")
+    cursor.execute("SELECT question_text FROM questions")
     answers = cursor.fetchall()
     
     for answer in answers:
         print(answer)
+    return answers
     
     conn.close()
 
 
 
-create_questions("site.db")
-create_answers("site.db")
-insert_to_question("site.db")
+# create_questions("site.db")
+# create_answers("site.db")
+# insert_to_question("site.db")
 print_all_answers()
+print('1')
 # add_answers("site.db")
