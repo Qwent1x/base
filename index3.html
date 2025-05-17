@@ -1,15 +1,19 @@
-<!DOCTYPE html>
- <html lang="uk">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Результати</title>
-     <link rel="stylesheet" href="{{ url_for('static', filename='css/style3.css') }}">
- </head>
- <body>
-     
-         <h1>Тест пройдено</h1>
-         <h1>Кількість правильних відповідей 0/5</h1>
-         
- </body>
- </html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Результати тесту</title>
+  <link rel="stylesheet" href="style3.css" />>
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 Тест завершено! 🎉</h1>
+    <div class="result-box">
+      <p><strong>Оцінка:</strong> <span id="grade">4 / 5</span></p>
+      <p><strong>Час проходження:</strong> <span id="time">01:45</span></p>
+      <p><strong>Середня швидкість відповіді:</strong> <span id="avgSpeed">21 секунд</span></p>
+    </div>
+    <button onclick="location.href='index.html'">Повернутися на головну</button>
+  </div>
+</body>
+</html>
