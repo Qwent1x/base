@@ -7,7 +7,11 @@ def create_questions(path_to_db):
     CREATE TABLE IF NOT EXISTS questions (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     question_text TEXT NOT NULL,
-    image_path TEXT
+    image_path TEXT, 
+    answer_1 TEXT NOT NULL, 
+    answer_2 TEXT NOT NULL, 
+    answer_3 TEXT NOT NULL, 
+    answer_4 TEXT NOT NULL
     )
     ''')
 
@@ -36,14 +40,14 @@ def insert_to_question(path_to_db):
     cursor = conn.cursor()
 
     questions = [
-        ("Що означає цей дорожній знак?", "1.png"),
+        ("Що означає цей дорожній знак?", "1.png", ),
         ("Що означає цей дорожній знак?", "2.png"),
         ("Що означає цей дорожній знак?", "3.png"),
         ("Що означає цей дорожній знак?", "4.png"),
         ("Що означає цей дорожній знак?", "5.png")
     ]
 
-    cursor.executemany("INSERT INTO questions (question_text, image_path) VALUES (?, ?)", questions)
+    cursor.executemany("INSERT INTO questions (question_text, image_path, answer_1, answer_2, answer_3, answer_4) VALUES (?, ?, ?, ?, ?, ?)", questions)
 
     conn.commit()
     conn.close()
@@ -104,15 +108,27 @@ def print_all_answers():
     
     for answer in answers:
         print(answer)
+    conn.close()
     return answers
     
+def print_all_questions():
+    conn = sqlite3.connect("site.db")
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT answer_text FROM questions")
+    answers = cursor.fetchall()
+    
+    for answer in answers:
+        print(answer)
     conn.close()
+    return answers
 
 
 
-# create_questions("site.db")
+
+create_questions("site.db")
 # create_answers("site.db")
 # insert_to_question("site.db")
-print_all_answers()
+# print_all_answers()
 print('1')
 # add_answers("site.db")

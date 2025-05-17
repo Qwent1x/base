@@ -3,7 +3,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Результати тесту</title>
-  <link rel="stylesheet" href="style3.css" />>
+  <link rel="stylesheet"  href="{{ url_for('static', filename='css/style3.css') }}" >
 </head>
 <body>
   <div class="container">
@@ -13,7 +13,7 @@
       <p><strong>Час проходження:</strong> <span id="time">01:45</span></p>
       <p><strong>Середня швидкість відповіді:</strong> <span id="avgSpeed">21 секунд</span></p>
     </div>
-    <button onclick="location.href='index.html'">Повернутися на головну</button>
+    <a href = '/'><button>Повернутися на головну</button></a>
   </div>
 </body>
 </html>
