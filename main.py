@@ -16,12 +16,12 @@ def start():
         return render_template('index3.html')
 
     # Витягуємо одне питання
-    question_text = questions[actual_answer][0]
-    image_path = questions[actual_answer][1]
-    answer_1 = questions[actual_answer][2]
-    answer_2 = questions[actual_answer][3]
-    answer_3 = questions[actual_answer][4]
-    answer_4 = questions[actual_answer][5]
+    question_text = questions[actual_answer][1]
+    image_path = questions[actual_answer][2]
+    answer_1 = questions[actual_answer][3]
+    answer_2 = questions[actual_answer][4]
+    answer_3 = questions[actual_answer][5]
+    answer_4 = questions[actual_answer][6]
 
     # Список відповідей
     answer_options = [answer_1, answer_2, answer_3, answer_4]
