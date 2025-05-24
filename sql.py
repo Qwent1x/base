@@ -1,3 +1,4 @@
+import pprint
 import sqlite3
 def create_questions(path_to_db):
     conn = sqlite3.connect('site.db')
@@ -123,12 +124,29 @@ def print_all_questions():
     conn.close()
     return answers
 
+def get_all_questions(path_to_db='site.db'):
+    conn = sqlite3.connect(path_to_db)
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT id, question_text, image_path, answer_1, answer_2, answer_3, answer_4 FROM questions')
+    questions = cursor.fetchall()
+
+    conn.close()
+    return questions
 
 
-
-create_questions("site.db")
-# create_answers("site.db")
-# insert_to_question("site.db")
-# print_all_answers()
-print('1')
-# add_answers("site.db")
+# et_all_questions()
+# # create_questions("site.db")
+# # create_answers("site.db")
+# # insert_to_question("site.db")
+# # print_all_answers()
+# print('1')
+# # add_answers("site.db")
+# def get_all_questions():
+#     conn = sqlite3.connect('site.db')
+#     cursor = conn.cursor()
+#     cursor.execute('SELECT * FROM questions')
+#     data = cursor.fetchall()
+#     pprint.pprint(data)
+#     return data
+pprint.pprint(get_all_questions())
